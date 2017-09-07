@@ -10,7 +10,7 @@
 		<!-- Bootstrap CSS CDN -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<!-- Our Custom CSS -->
-		<link rel="stylesheet" href="realtimes.css">
+		<link rel="stylesheet" href="css/realtimes.css">
 		<link rel="stylesheet" href="jqcloud/jqcloud.min.css">
 	</head>
 	<body>
@@ -19,7 +19,7 @@
             <nav id="sidebar">
                 <div class="sidebar-header">
                     <!-- <h3>Realtimes</h3> -->
-                    <img id="realtimes-logo" src="img/realtimes.png">
+                    <a href="index.jsp"><img id="realtimes-logo" src="img/realtimes.png"></a>
                 </div>
 
                 <ul class="list-unstyled components">
@@ -37,13 +37,13 @@
 						</c:otherwise>
 					</c:choose>
                     <li>
-                        <a href="#">맞춤 뉴스</a>
+                        <a href="recommend.jsp">맞춤 뉴스</a>
                     </li>
                     <li>
-                        <a href="#">일반 뉴스</a>
+                        <a href="general.jsp">일반 뉴스</a>
                     </li>
                     <li>
-                        <a href="#">이슈 모음</a>
+                        <a href="issue.jsp">이슈 모음</a>
                     </li>
                     <li>
                         <a href="#settingsSubmenu" data-toggle="collapse" aria-expanded="false">설정</a>
@@ -74,9 +74,9 @@
 
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="#">맞춤 뉴스</a></li>
-                                <li><a href="#">일반 뉴스</a></li>
-                                <li><a href="#">이슈 모음</a></li>
+                                <li><a href="recommend.jsp">맞춤 뉴스</a></li>
+                                <li><a href="general.jsp">일반 뉴스</a></li>
+                                <li><a href="issue.jsp">이슈 모음</a></li>
                             </ul>
                         </div>
                     </div>
