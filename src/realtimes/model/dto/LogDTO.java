@@ -3,14 +3,14 @@ package realtimes.model.dto;
 public class LogDTO {
 	
 	private int log_code;
-	private String username;
+	private int member_code;
 	private String news_code;
 	private String viewing_time;
 	
-	public LogDTO(int log_code, String username, String news_code, String viewing_time) {
+	public LogDTO(int log_code, int member_code, String news_code, String viewing_time) {
 		super();
 		this.log_code = log_code;
-		this.username = username;
+		this.member_code = member_code;
 		this.news_code = news_code;
 		this.viewing_time = viewing_time;
 	}
@@ -23,12 +23,12 @@ public class LogDTO {
 		this.log_code = log_code;
 	}
 	
-	public String getUsername() {
-		return username;
+	public int getMember_code() {
+		return member_code;
 	}
 	
-	public void setUsername(String username) {
-		this.username = username;
+	public void setMember_code(int member_code) {
+		this.member_code = member_code;
 	}
 	
 	public String getNews_code() {
@@ -49,7 +49,7 @@ public class LogDTO {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("LogDTO [log_code=").append(log_code).append(", username=").append(username)
+		builder.append("LogDTO [log_code=").append(log_code).append(", member_code=").append(member_code)
 				.append(", news_code=").append(news_code).append(", viewing_time=").append(viewing_time).append("]");
 		return builder.toString();
 	}

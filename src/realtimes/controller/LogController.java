@@ -26,16 +26,17 @@ public class LogController extends HttpServlet {
 	}
 	
 	public void addLog(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		String news_code = request.getParameter("news_code").trim();
+		int member_code = -1;
+		int news_code = Integer.parseInt(request.getParameter("news_code").trim());
+		int topic = -1;
 		String viewing_time = request.getParameter("viewing_time").trim();
-		String username = "unknown";
-
-		if (request.getSession().getAttribute("login") != null) {
-			username = (String) request.getSession().getAttribute("login");
+		
+		if (request.getSession().getAttribute("member_code") != null) {
+			member_code = (Integer) request.getSession().getAttribute("member_code");
 		}
 		
 		try {
-			RealtimesService.addLog(username, news_code, viewing_time);
+			RealtimesService.addLog(member_code, news_code, topic, viewing_time);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}	

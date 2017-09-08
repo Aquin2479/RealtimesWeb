@@ -81,22 +81,32 @@
                         </div>
                     </div>
                 </nav>
-				<div class="index_content row">
-					<h2>Collapsible Sidebar Using Bootstrap 3</h2>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		
-		                <div class="line"></div>
-		
-		                <h2>Lorem Ipsum Dolor</h2>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		
-		                <div class="line"></div>
-		
-		                <h2>Lorem Ipsum Dolor</h2>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		
-		                <div class="line"></div>
+					<div class="index_content">
+						<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation" class="active"><a href="#politics" aria-controls="politics" role="tab" data-toggle="tab">정치</a></li>
+							<li role="presentation"><a href="#economy" aria-controls="economy" role="tab" data-toggle="tab">경제</a></li>
+							<li role="presentation"><a href="#social" aria-controls="social" role="tab" data-toggle="tab">사회</a></li>
+							<li role="presentation"><a href="#it" aria-controls="it" role="tab" data-toggle="tab">IT/과학</a></li>
+							<li role="presentation"><a href="#entertainments" aria-controls="entertainments" role="tab" data-toggle="tab">연예</a></li>
+							<li role="presentation"><a href="#sports" aria-controls="sports" role="tab" data-toggle="tab">스포츠</a></li>
+						</ul>
+						<!-- Tab panes -->
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="politics">
+							</div>
+							<div role="tabpanel" class="tab-pane active" id="economy">
+							</div>
+							<div role="tabpanel" class="tab-pane active" id="social">
+							</div>
+							<div role="tabpanel" class="tab-pane active" id="it">
+							</div>
+							<div role="tabpanel" class="tab-pane active" id="entertainments">
+							</div>
+							<div role="tabpanel" class="tab-pane active" id="sports">
+							</div>
+						</div>
+					</div>
+		             <div class="line"></div>
             		</div>
         		</div>
         </div>
@@ -181,6 +191,68 @@
 						},
 						method: "post",
 						dataType: "json"
+					});
+				});
+				
+				var assign = function(news_code, topic, site, title, writing_time, company, img, content) {
+					var article_card = 
+					    "<div class ='article-cards' news_code='"+news_code+"' topic='"+topic+"' site='"+site+"' >"+
+						"<div class='row'>"+
+							"<div class='col-sm-3' style='border-right:1px solid #ddd;'>"+
+								"<img class='article-cards-img' src='"+img+"'>"+
+							"</div>"+
+							"<div class='col-sm-9'>"+
+								"<div>"+
+									"<span class='article-cards-site badge'>"+company+"</span>"+
+									"<span class='article-cards-time'>"+writing_time+"</span>"+
+								"</div>"+
+								"<div class='article-cards-title'>"+
+									title+
+								"</div>"+
+								"<div class='article-cards-contents'>"+
+									content
+								"</div>"+
+							"</div>"+
+						"</div>"+
+					"</div>";
+					
+					return article_card;
+				};
+				
+				// tab event
+				$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+				    var target = $(e.target).attr("href");
+				    $(target).html("");
+				    var site = target.substr(1);
+
+					if (site !== 'politics') return;
+				    
+					$.ajax({
+							url: "news",
+							data: {
+								command: "getGeneralNews",
+								site: site
+							},
+							method: "get",
+							dataType: "json",
+							success: function(result) {
+								if (result && result.result == 0) {
+									var json_list = JSON.parse(result.list);
+									for (var i = 0; i < json_list.length; i++) {
+										$(target).append(assign(
+												json_list[i].news_code,
+												json_list[i].topic,
+												json_list[i].site,
+												json_list[i].title,
+												json_list[i].writing_time,
+												json_list[i].company,
+												json_list[i].img,
+												json_list[i].content));
+									}
+								} else {
+									alert(result.content);
+								}
+							}
 					});
 				});
 			});	
