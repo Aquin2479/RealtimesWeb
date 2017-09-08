@@ -170,6 +170,59 @@
 						dataType: "json"
 					});
 				});
+				
+				var assign = function(news_code, topic, site, title, writing_time, company, img, content) {
+					var article_card = 
+					    "<div class ='article-cards' news_code='"+news_code+"' topic='"+topic+"' site='"+site+"' >"+
+						"<div class='row'>"+
+							"<div class='col-sm-3' style='border-right:1px solid #ddd;'>"+
+								"<img class='article-cards-img' src='"+img+"'>"+
+							"</div>"+
+							"<div class='col-sm-9'>"+
+								"<div>"+
+									"<span class='article-cards-site badge'>"+company+"</span>"+
+									"<span class='article-cards-time'>"+writing_time+"</span>"+
+								"</div>"+
+								"<div class='article-cards-title'>"+
+									title+
+								"</div>"+
+								"<div class='article-cards-contents'>"+
+									content
+								"</div>"+
+							"</div>"+
+						"</div>"+
+					"</div>";
+					
+					return article_card;
+				};
+				
+				/* $.ajax({
+						url: "news",
+						data: {
+							command: "getRecommendNews"
+						},
+						method: "get",
+						dataType: "json",
+						success: function(result) {
+							if (result && result.result == 0) {
+								var json_list = JSON.parse(result.list);
+								for (var i = 0; i < json_list.length; i++) {
+									$('#???').append(assign(
+											json_list[i].news_code,
+											json_list[i].topic,
+											json_list[i].site,
+											json_list[i].title,
+											json_list[i].writing_time,
+											json_list[i].company,
+											json_list[i].img,
+											json_list[i].content));
+								}
+							} else {
+								alert(result.content);
+							}
+						}
+				}); */
+				
 			});	
          </script>
 	</body>

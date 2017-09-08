@@ -19,4 +19,8 @@ public class RealtimesService {
 	public static ArrayList<NewsDTO> getGeneralNews(String site) throws SQLException {
 		return NewsDAO.getGeneralNews(site);
 	}
+	
+	public static ArrayList<NewsDTO> getRecommendNews() throws SQLException {
+		return NewsDAO.getRecommendNews();
+	}
 }

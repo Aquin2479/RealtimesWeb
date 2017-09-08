@@ -33,4 +33,24 @@ public class NewsDAO {
 			}
 			return list;
 	}
+	
+	public static ArrayList<NewsDTO> getRecommendNews() throws SQLException {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			ArrayList<NewsDTO> list = null;
+			try {
+				con = DBUtil.getConnection();
+				pstmt = con.prepareStatement(sql.getString("getRecommendNews"));
+				rset = pstmt.executeQuery();
+	         
+				list = new ArrayList<NewsDTO>();
+				while (rset.next()) {
+					list.add(new NewsDTO(rset.getString(1), rset.getInt(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8)));
+				}
+			} finally {
+				DBUtil.close(con, pstmt, rset);
+			}
+			return list;
+	}
 }
