@@ -2,7 +2,7 @@ package realtimes.model.dto;
 
 public class NewsDTO {
 	
-	private int news_code;
+	private String news_code;
 	private int topic;
 	private String site;
 	private String title;
@@ -11,7 +11,7 @@ public class NewsDTO {
     private String img;
     private String content;
     
-	public NewsDTO(int news_code, int topic, String site, String title, String writing_time, String company, String img,
+	public NewsDTO(String news_code, int topic, String site, String title, String writing_time, String company, String img,
 			String content) {
 		super();
 		this.news_code = news_code;
@@ -24,11 +24,11 @@ public class NewsDTO {
 		this.content = content;
 	}
 	
-	public int getNews_code() {
+	public String getNews_code() {
 		return news_code;
 	}
 	
-	public void setNews_code(int news_code) {
+	public void setNews_code(String news_code) {
 		this.news_code = news_code;
 	}
 	

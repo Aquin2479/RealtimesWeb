@@ -12,7 +12,7 @@ public class RealtimesService {
 		return MemberDAO.getMember(username, password);
 	}
 	
-	public static boolean addLog(int member_code, int news_code, int topic, String viewing_time) throws SQLException {
+	public static boolean addLog(int member_code, String news_code, int topic, String viewing_time) throws SQLException {
 		return LogDAO.addLog(member_code, news_code, topic, viewing_time);
 	}
 	

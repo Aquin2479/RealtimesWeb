@@ -82,20 +82,7 @@
                     </div>
                 </nav>
 				<div class="index_content row">
-						<h3 class = "news_button" id="0001">Collapsible Sidebar Using Bootstrap 3</h3>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		
-		                <div class="line"></div>
-		
-		                <h3 class = "news_button" id="0002">Lorem Ipsum Dolor</h3>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		
-		                <div class="line"></div>
-		
-		                <h3 class="news_button" id="0003">Lorem Ipsum Dolor</h3>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		
+						
 		                <div class="line"></div>
             		</div>
         		</div>
@@ -182,41 +169,6 @@
 						method: "post",
 						dataType: "json"
 					});
-				});
-				
-				var clicked_news = null;
-				var viewing_start_time = null;
-				var viewing_end_time = null;
-				
-				// news
-				$('.news_button').on('click', function() {
-					clicked_news = $(this).attr('id');
-					$('#article-modal').modal('show');
-				});
-				// article modal
-				$('#article-modal').on('show.bs.modal', function (e) {
-					viewing_start_time = Date.now();
-					console.log("start viewing: ", clicked_news);
-					// get content of clicked_news and fill modal
-				});
-				$('#article-modal').on('hide.bs.modal', function (e) {
-					viewing_end_time = (Date.now() - viewing_start_time) / 1000;
-					console.log("end viewing: ", clicked_news, viewing_end_time);
-					
-					$.ajax({
-						url: "log",
-						data: {
-							command: "addLog",
-							news_code: clicked_news,
-							viewing_time: viewing_end_time
-						},
-						method: "post",
-						dataType: "json"
-					});
-					
-					clicked_news = null;
-					viewing_start_time = null;
-					viewing_end_time = null;
 				});
 			});	
          </script>

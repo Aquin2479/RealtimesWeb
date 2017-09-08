@@ -82,7 +82,7 @@
                     </div>
                 </nav>
 					<div class="index_content">
-						<ul class="nav nav-tabs" role="tablist">
+						<ul class="nav nav-tabs" role="tablist" id ="generalTabs">
 							<li role="presentation" class="active"><a href="#politics" aria-controls="politics" role="tab" data-toggle="tab">정치</a></li>
 							<li role="presentation"><a href="#economy" aria-controls="economy" role="tab" data-toggle="tab">경제</a></li>
 							<li role="presentation"><a href="#social" aria-controls="social" role="tab" data-toggle="tab">사회</a></li>
@@ -219,6 +219,34 @@
 					return article_card;
 				};
 				
+				$.ajax({
+						url: "news",
+						data: {
+							command: "getGeneralNews",
+							site: 'politics'
+						},
+						method: "get",
+						dataType: "json",
+						success: function(result) {
+							if (result && result.result == 0) {
+								var json_list = JSON.parse(result.list);
+								for (var i = 0; i < json_list.length; i++) {
+									$('#politics').append(assign(
+											json_list[i].news_code,
+											json_list[i].topic,
+											json_list[i].site,
+											json_list[i].title,
+											json_list[i].writing_time,
+											json_list[i].company,
+											json_list[i].img,
+											json_list[i].content));
+								}
+							} else {
+								alert(result.content);
+							}
+						}
+				});
+				
 				// tab event
 				$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 				    var target = $(e.target).attr("href");
@@ -254,6 +282,48 @@
 								}
 							}
 					});
+				});
+				// news modal
+				var clicked_news = null; // 뉴스 코드
+				var clicked_topic = null; // 토픽 번호
+				var clicked_site = null; // 뉴스 종류
+				var viewing_start_time = null;
+				var viewing_end_time = null;
+
+				$(document).on('click', '.article-cards', function() {
+					console.log('clicked')
+					clicked_news = $(this).attr('news_code');
+					clicked_topic = $(this).attr('topic');
+					clicked_site = $(this).attr('site');
+					$('#article-modal').modal('show');
+				});
+				// article modal
+				$('#article-modal').on('show.bs.modal', function (e) {
+					viewing_start_time = Date.now();
+					console.log("start viewing: ", clicked_news, clicked_topic, clicked_site);
+					// get content of clicked_news and fill modal
+				});
+				$('#article-modal').on('hide.bs.modal', function (e) {
+					viewing_end_time = (Date.now() - viewing_start_time) / 1000;
+					console.log("end viewing: ", clicked_news, viewing_end_time);
+					
+					$.ajax({
+						url: "log",
+						data: {
+							command: "addLog",
+							news_code: clicked_news,
+							topic: clicked_topic,
+							viewing_time: viewing_end_time
+						},
+						method: "post",
+						dataType: "json"
+					});
+					
+					clicked_news = null;
+					clicked_topic = null;
+					cliecked_site = null;
+					viewing_start_time = null;
+					viewing_end_time = null;
 				});
 			});	
          </script>
