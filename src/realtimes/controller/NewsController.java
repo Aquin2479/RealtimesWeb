@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +18,9 @@ import org.json.simple.JSONObject;
 import com.google.gson.Gson;
 
 import realtimes.model.RealtimesService;
+import realtimes.model.dto.LogDTO;
 import realtimes.model.dto.NewsDTO;
+import realtimes.model.dto.TopicDTO;
 
 @WebServlet("/news")
 public class NewsController extends HttpServlet {
@@ -74,9 +78,36 @@ public class NewsController extends HttpServlet {
 			//      이 List를 아래의 getRecommendNews 함수에 전달하여 list를 사용자에게 반환해준다
 			
 			// 3. 위의 과정은 필요하면 새로운 java class를 생성하여 진행
+			ArrayList<TopicDTO> topic = RealtimesService.getTopicAll();
+			ArrayList<LogDTO> log = RealtimesService.getLog(member_code);
+			ArrayList log_topic = new ArrayList<Integer>();
 			
-			ArrayList<NewsDTO> list = RealtimesService.getRecommendNews();
-			
+			for(int i = 0; i < 5; i++){
+				log_topic.add(log.get(i).getTopic());
+			}
+			int i = 0;
+			int j = 1;
+			int[] count = new int[4];//5개의 로그 토픽들 중 같은 토픽 개수를 알아야하므로 4개의 integer를 선언하여 계산
+			while(i<5){
+				while(j<5){
+					if (log_topic.get(i) == log_topic.get(j)){
+						count[i]++;
+					}
+					j++;
+				}
+				i++;
+				j = i+1;
+			}
+			int max = count[0];
+	        int maxTopic = 0;
+	        for(int t = 1; t<count.length ; t++){
+	            if(count[t] > max){
+	                max = count[t];
+	                maxTopic = t;
+	            }
+	        }
+	        ArrayList<NewsDTO> list = RealtimesService.getRecommendNews((int) log_topic.get(maxTopic));
+
 			String stringList = new Gson().toJson(list);
 			resultOb.put("result", 0);
 			resultOb.put("list", stringList);

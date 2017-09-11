@@ -3,8 +3,10 @@ package realtimes.model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import realtimes.model.dto.LogDTO;
 import realtimes.model.dto.MemberDTO;
 import realtimes.model.dto.NewsDTO;
+import realtimes.model.dto.TopicDTO;
 
 public class RealtimesService {
 	
@@ -16,11 +18,17 @@ public class RealtimesService {
 		return LogDAO.addLog(member_code, news_code, topic, viewing_time);
 	}
 	
+	public static ArrayList<LogDTO> getLog(int member_code) throws SQLException {
+		return LogDAO.getlog(member_code);
+	}
 	public static ArrayList<NewsDTO> getGeneralNews(String site) throws SQLException {
 		return NewsDAO.getGeneralNews(site);
 	}
 	
-	public static ArrayList<NewsDTO> getRecommendNews() throws SQLException {
-		return NewsDAO.getRecommendNews();
+	public static ArrayList<NewsDTO> getRecommendNews(int topic) throws SQLException {
+		return NewsDAO.getRecommendNews(topic);
+	}
+	public static ArrayList<TopicDTO> getTopicAll() throws SQLException {
+		return TopicDAO.getTopicAll();
 	}
 }

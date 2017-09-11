@@ -2,6 +2,7 @@ DROP TABLE MEMBER cascade constraint;
 DROP SEQUENCE member_code_seq;
 DROP TABLE TOPIC cascade constraint;
 DROP TABLE NEWS cascade constraint;
+DROP TABLE ALREADYVIEW cascade constraint;
 DROP TABLE LOG cascade constraint;
 DROP SEQUENCE log_code_seq;
 
@@ -36,6 +37,11 @@ CREATE TABLE NEWS
     content            VARCHAR2(4000) NOT NULL
 );
 
+CREATE TABLE ALREADYVIEW
+(
+	site		VARCHAR2(500) NOT NULL
+);
+
 CREATE SEQUENCE log_code_seq;
 CREATE TABLE LOG
 (
@@ -45,4 +51,3 @@ CREATE TABLE LOG
 	topic			NUMBER(15) NOT NULL,
 	viewing_time			VARCHAR2(100) NOT NULL
 );
-
