@@ -21,11 +21,10 @@
                     <!-- <h3>Realtimes</h3> -->
                     <a href="index.jsp"><img id="realtimes-logo" src="img/realtimes.png"></a>
                 </div>
-
                 <ul class="list-unstyled components">
                 		<c:choose>
-						<c:when test="${sessionScope.login!=null}">
-							<li style="text-align:center;"> login as : ${sessionScope.login} </li>
+						<c:when test="${sessionScope.username!=null}">
+							<li style="text-align:center;"> login as : ${sessionScope.username} </li>
 						<ul class="list-unstyled CTAs">
 		                    <li><a href="index.jsp" class="logout_button">로그아웃</a></li>
 		                </ul>
