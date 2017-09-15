@@ -19,15 +19,15 @@ public class RealtimesService {
 	}
 	
 	public static ArrayList<LogDTO> getLog(int member_code) throws SQLException {
-		return LogDAO.getlog(member_code);
+		return LogDAO.getLog(member_code);
 	}
 	
 	public static ArrayList<NewsDTO> getGeneralNews(String section) throws SQLException {
 		return NewsDAO.getGeneralNews(section);
 	}
 	
-	public static ArrayList<NewsDTO> getRecommendNews(int topic) throws SQLException {
-		return NewsDAO.getRecommendNews(topic);
+	public static NewsDTO getRecommendNews(String topic_name) throws SQLException {
+		return NewsDAO.getRecommendNews(topic_name);
 	}
 	
 	public static ArrayList<TopicDTO> getTopicAll() throws SQLException {
@@ -60,5 +60,9 @@ public class RealtimesService {
 	
 	public static ArrayList<TopicDTO> get10Topic() throws SQLException {
 		return TopicDAO.get10Topic();
+	}
+
+	public static ArrayList<String> getUserKeyword(String topic_name) throws SQLException {
+		return TopicDAO.getUserKeyword(topic_name);
 	}
 }

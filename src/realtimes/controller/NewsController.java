@@ -5,7 +5,16 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.NavigableMap;
+import java.util.Set;
+import java.util.TreeMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -69,44 +78,51 @@ public class NewsController extends HttpServlet {
 		}
 		
 		try {
-			// getRecommendNews(미완성) TODO by jangwon
-			// 1. member_code를 이용하여  LogDAO에서 getLogByUser함수를 생성하여 관련 로직을 완성한 후, 사용자의 로그들를 불러온다.
-			// 2. topic의 경우 테이블을 만들어 놨지만 java 코드가 안 짜여져 있다.
-			//      DTO부터 차례로 만들어 TopicDAO에서 getTopicAll 함수를 생성하여 모든 토픽을 불러오도록 한다.
-			//      모든 토픽 테이블이 불러와졌고, 사용자의 로그도 모두 수집하였으므로, 적당한 알고리즘을 통해 선호도를 파악하고,
-			//      뉴스 리스트를 뽑아낸다(뉴스 아이디의 List? 형식)
-			//      이 List를 아래의 getRecommendNews 함수에 전달하여 list를 사용자에게 반환해준다
-			
-			// 3. 위의 과정은 필요하면 새로운 java class를 생성하여 진행
-			ArrayList<TopicDTO> topic = RealtimesService.getTopicAll();
-			ArrayList<LogDTO> log = RealtimesService.getLog(member_code);
-			ArrayList log_topic = new ArrayList<Integer>();
-			
-			for(int i = 0; i < 5; i++){
-				log_topic.add(log.get(i).getTopic());
-			}
-			int i = 0;
-			int j = 1;
-			int[] count = new int[4];//5개의 로그 토픽들 중 같은 토픽 개수를 알아야하므로 4개의 integer를 선언하여 계산
-			while(i<5){
-				while(j<5){
-					if (log_topic.get(i) == log_topic.get(j)){
-						count[i]++;
+			ArrayList<TopicDTO> recentTopic = RealtimesService.getTopicAll(); // 최신 토픽 10 x 6
+			ArrayList<LogDTO> log = RealtimesService.getLog(member_code); // 최신 로그 5개
+			ArrayList<String> userKeyword = new ArrayList<String>(); // 사용자 로그에서 취합한 키워를 담을 리스트
+
+			HashMap<Integer, Integer> topicDistance = new HashMap<Integer, Integer>(); 
+			// 유저와 최신 토픽간 거리를 계산할 맵
+
+			for (int i = 0; i < log.size(); i++) { // 로그 size : 5
+				if ( i % 2 == 0 ) { // 로그가 두개로 들어가는 문제
+					ArrayList<String> keywordSet = RealtimesService.getUserKeyword(log.get(i).getTopic_name());
+					for(int j = 0; j < keywordSet.size(); j++) { // 로그에 해당하는 topic size 5 
+						userKeyword.add(keywordSet.get(j));
 					}
-					j++;
 				}
-				i++;
-				j = i+1;
 			}
-			int max = count[0];
-	        int maxTopic = 0;
-	        for(int t = 1; t<count.length ; t++){
-	            if(count[t] > max){
-	                max = count[t];
-	                maxTopic = t;
-	            }
+	
+			Set userKeywordSet = new HashSet(userKeyword); // 사용자 키워드 리스트의 중복을 제거하기 위해 Set 사용
+
+			for (int i = 0; i < recentTopic.size(); i++) {
+					topicDistance.put(i, 0);
+					if (userKeywordSet.contains(recentTopic.get(i).getKeyword1())) {
+						topicDistance.put(i, topicDistance.get(i) + 1);
+					}
+					if (userKeywordSet.contains(recentTopic.get(i).getKeyword2())) {
+						topicDistance.put(i, topicDistance.get(i) + 1);
+					} 
+					if (userKeywordSet.contains(recentTopic.get(i).getKeyword3())) {
+						topicDistance.put(i, topicDistance.get(i) + 1);
+					}
+					if (userKeywordSet.contains(recentTopic.get(i).getKeyword4())) {
+						topicDistance.put(i, topicDistance.get(i) + 1);
+					}
+					if (userKeywordSet.contains(recentTopic.get(i).getKeyword5())) {
+						topicDistance.put(i, topicDistance.get(i) + 1);
+					}
+			}
+			
+			ArrayList<NewsDTO> list = new ArrayList<NewsDTO>();
+			Iterator it = sortByValue2(topicDistance).iterator();
+	        
+	        while(it.hasNext()) {
+	            Integer temp = (Integer) it.next();
+	            String topic_name = recentTopic.get(temp).getTopic_name();
+	            list.add(RealtimesService.getRecommendNews(topic_name));
 	        }
-	        ArrayList<NewsDTO> list = RealtimesService.getRecommendNews((int) log_topic.get(maxTopic));
 
 			String stringList = new Gson().toJson(list);
 			resultOb.put("result", 0);
@@ -118,5 +134,42 @@ public class NewsController extends HttpServlet {
 		}
 		writer.print(resultOb);
 	}
+	
+	public static Map sortByValue(Map unsortedMap) {
+		Map sortedMap = new TreeMap(new ValueComparator(unsortedMap));
+		sortedMap.putAll(unsortedMap);
+		return sortedMap;
+	}
+	
+	public static List sortByValue2(final Map map) {
+        List<String> list = new ArrayList();
+        list.addAll(map.keySet());
+         
+        Collections.sort(list,new Comparator() {
+             
+            public int compare(Object o1,Object o2) {
+                Object v1 = map.get(o1);
+                Object v2 = map.get(o2);
+                 
+                return ((Comparable) v2).compareTo(v1);
+            }
+             
+        });
+        Collections.reverse(list); // 주석시 오름차순
+        return list;
+    }
+}
 
+class ValueComparator implements Comparator {
+	Map map;
+ 
+	public ValueComparator(Map map) {
+		this.map = map;
+	}
+ 
+	public int compare(Object keyA, Object keyB) {
+		Comparable valueA = (Comparable) map.get(keyA);
+		Comparable valueB = (Comparable) map.get(keyB);
+		return valueB.compareTo(valueA);
+	}
 }

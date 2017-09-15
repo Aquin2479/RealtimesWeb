@@ -196,7 +196,7 @@
 					return article_card;
 				};
 				
-				/* $.ajax({
+				$.ajax({
 						url: "news",
 						data: {
 							command: "getRecommendNews"
@@ -204,7 +204,8 @@
 						method: "get",
 						dataType: "json",
 						success: function(result) {
-							if (result && result.result == 0) {
+							console.log(result);
+							/* if (result && result.result == 0) {
 								var json_list = JSON.parse(result.list);
 								for (var i = 0; i < json_list.length; i++) {
 									$('#???').append(assign(
@@ -219,9 +220,9 @@
 								}
 							} else {
 								alert(result.content);
-							}
+							} */
 						}
-				}); */
+				});
 				
 			});	
          </script>

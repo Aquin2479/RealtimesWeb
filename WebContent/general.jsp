@@ -246,7 +246,7 @@
 								for (var i = 0; i < json_list.length; i++) {
 									$('#politics').append(assign(
 											json_list[i].news_code,
-											json_list[i].topic,
+											json_list[i].topic_name,
 											json_list[i].section,
 											json_list[i].title,
 											json_list[i].writing_time,

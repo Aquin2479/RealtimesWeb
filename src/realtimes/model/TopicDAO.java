@@ -13,6 +13,32 @@ import realtimes.model.util.DBUtil;
 public class TopicDAO {
 	static ResourceBundle sql = DBUtil.getResourceBundle();
 	
+	public static ArrayList<String> getUserKeyword(String topic_name) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<String> list = null;
+		
+		try {
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(sql.getString("getUserKeyword"));
+			pstmt.setString(1, topic_name);
+			rset = pstmt.executeQuery();
+         
+			list = new ArrayList<String>();
+			while (rset.next()) {
+				list.add(rset.getString(4));
+				list.add(rset.getString(5));
+				list.add(rset.getString(6));
+				list.add(rset.getString(7));
+				list.add(rset.getString(8));
+			}
+		} finally {
+			DBUtil.close(con, pstmt, rset);
+		}
+		return list;
+	}
+	
 	public static ArrayList<TopicDTO> getTopicAll() throws SQLException {
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -31,6 +57,26 @@ public class TopicDAO {
 				DBUtil.close(con, pstmt, rset);
 			}
 			return list;
+	}
+	
+	public static ArrayList<TopicDTO> getTopic() throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<TopicDTO> list = null;
+		try {
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(sql.getString("getSectionTopic1"));
+			rset = pstmt.executeQuery();
+         
+			list = new ArrayList<TopicDTO>();
+			while (rset.next()) {
+				list.add(new TopicDTO(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8), rset.getString(9), rset.getString(10), rset.getInt(11)));
+			}
+		} finally {
+			DBUtil.close(con, pstmt, rset);
+		}
+		return list;
 	}
 	
 	public static ArrayList<TopicDTO> getSectionTopic1() throws SQLException {

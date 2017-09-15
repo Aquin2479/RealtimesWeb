@@ -39,7 +39,7 @@ public class LogDAO {
 		return false;
 	}
 	
-	public static ArrayList<LogDTO> getlog(int member_code) throws SQLException {
+	public static ArrayList<LogDTO> getLog(int member_code) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -53,7 +53,7 @@ public class LogDAO {
 			
 			log = new ArrayList<>();
 			while (rset.next()) {
-				log.add(new LogDTO(rset.getInt(1), rset.getInt(2), rset.getString(3), rset.getInt(4), rset.getString(5)));
+				log.add(new LogDTO(rset.getInt(1), rset.getInt(2), rset.getString(3), rset.getString(4), rset.getString(5)));
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rset);
