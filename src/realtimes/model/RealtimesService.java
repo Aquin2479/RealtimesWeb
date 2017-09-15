@@ -21,6 +21,7 @@ public class RealtimesService {
 	public static ArrayList<LogDTO> getLog(int member_code) throws SQLException {
 		return LogDAO.getlog(member_code);
 	}
+	
 	public static ArrayList<NewsDTO> getGeneralNews(String section) throws SQLException {
 		return NewsDAO.getGeneralNews(section);
 	}
@@ -28,7 +29,12 @@ public class RealtimesService {
 	public static ArrayList<NewsDTO> getRecommendNews(int topic) throws SQLException {
 		return NewsDAO.getRecommendNews(topic);
 	}
+	
 	public static ArrayList<TopicDTO> getTopicAll() throws SQLException {
 		return TopicDAO.getTopicAll();
+	}
+	
+	public static ArrayList<TopicDTO> getSectionTopic() throws SQLException {
+		return TopicDAO.getSectionTopic();
 	}
 }

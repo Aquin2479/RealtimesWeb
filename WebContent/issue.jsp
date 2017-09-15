@@ -340,6 +340,25 @@
 						dataType: "json"
 					});
 				});
+				
+				$.ajax({
+						url: "topic",
+						data: {
+							command: "getSectionTopic"
+						},
+						method: "get",
+						dataType: "json",
+						success: function(result) {
+							if (result && result.result == 0) {
+								var json_list = JSON.parse(result.list);
+								for (var i = 0; i < json_list.length; i++) {
+									console.log(json_list[i]);
+								}
+							} else {
+								alert(result.content);
+							}
+						}
+				});
 			});	
          </script>
 	</body>

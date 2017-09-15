@@ -26,8 +26,9 @@ CREATE TABLE TOPIC
    	keyword3         VARCHAR2(200) NOT NULL,
    	keyword4         VARCHAR2(200) NOT NULL,
    	keyword5         VARCHAR2(200) NOT NULL,
-   	analysis_start_time VARCHAR2(200) NOT NULL,
-   	analysis_end_time VARCHAR2(200) NOT NULL,
+   	analysis_start_time NUMBER(15) NOT NULL,
+   	analysis_end_time NUMBER(15) NOT NULL,
+   	article_count NUMBER(15) NOT NULL
 );
 
 CREATE TABLE NEWS
