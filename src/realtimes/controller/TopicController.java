@@ -27,9 +27,40 @@ public class TopicController extends HttpServlet {
 		String command = request.getParameter("command");
 		if (command.equals("getTopicAll")) {
 			getTopicAll(request, response);
-		} else if (command.equals("getSectionTopic")) {
-			getSectionTopic(request, response);
+		} else if (command.equals("getSectionTopic1")) {
+			getSectionTopic1(request, response);
+		} else if (command.equals("getSectionTopic2")) {
+			getSectionTopic2(request, response);
+		} else if (command.equals("getSectionTopic3")) {
+			getSectionTopic3(request, response);
+		} else if (command.equals("getSectionTopic4")) {
+			getSectionTopic4(request, response);
+		} else if (command.equals("getSectionTopic5")) {
+			getSectionTopic5(request, response);
+		} else if (command.equals("getSectionTopic6")) {
+			getSectionTopic6(request, response);
+		} else if (command.equals("get10Topic")) {
+			get10Topic(request, response);
 		}
+	}
+	
+	public void get10Topic(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/xml;charset=UTF-8");
+		PrintWriter writer = response.getWriter();
+		
+		JSONObject resultOb = new JSONObject();
+		
+		try {
+			ArrayList<TopicDTO> list = RealtimesService.get10Topic();
+			String stringList = new Gson().toJson(list);
+			resultOb.put("result", 0);
+			resultOb.put("list", stringList);
+		} catch (SQLException e) {
+			resultOb.put("result", 1);
+			resultOb.put("content", "Can`t get News Contents(DB Error)");
+			e.printStackTrace();
+		}
+		writer.print(resultOb);
 	}
 
 	public void getTopicAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -51,14 +82,109 @@ public class TopicController extends HttpServlet {
 		writer.print(resultOb);
 	}
 	
-	public void getSectionTopic(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void getSectionTopic1(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/xml;charset=UTF-8");
 		PrintWriter writer = response.getWriter();
 		
 		JSONObject resultOb = new JSONObject();
 		
 		try {
-			ArrayList<TopicDTO> list = RealtimesService.getSectionTopic();
+			ArrayList<TopicDTO> list = RealtimesService.getSectionTopic1();
+			String stringList = new Gson().toJson(list);
+			resultOb.put("result", 0);
+			resultOb.put("list", stringList);
+		} catch (SQLException e) {
+			resultOb.put("result", 1);
+			resultOb.put("content", "Can`t get News Contents(DB Error)");
+			e.printStackTrace();
+		}
+		writer.print(resultOb);
+	}
+	
+	public void getSectionTopic2(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/xml;charset=UTF-8");
+		PrintWriter writer = response.getWriter();
+		
+		JSONObject resultOb = new JSONObject();
+		
+		try {
+			ArrayList<TopicDTO> list = RealtimesService.getSectionTopic2();
+			String stringList = new Gson().toJson(list);
+			resultOb.put("result", 0);
+			resultOb.put("list", stringList);
+		} catch (SQLException e) {
+			resultOb.put("result", 1);
+			resultOb.put("content", "Can`t get News Contents(DB Error)");
+			e.printStackTrace();
+		}
+		writer.print(resultOb);
+	}
+	
+	public void getSectionTopic3(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/xml;charset=UTF-8");
+		PrintWriter writer = response.getWriter();
+		
+		JSONObject resultOb = new JSONObject();
+		
+		try {
+			ArrayList<TopicDTO> list = RealtimesService.getSectionTopic3();
+			String stringList = new Gson().toJson(list);
+			resultOb.put("result", 0);
+			resultOb.put("list", stringList);
+		} catch (SQLException e) {
+			resultOb.put("result", 1);
+			resultOb.put("content", "Can`t get News Contents(DB Error)");
+			e.printStackTrace();
+		}
+		writer.print(resultOb);
+	}
+	
+	public void getSectionTopic4(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/xml;charset=UTF-8");
+		PrintWriter writer = response.getWriter();
+		
+		JSONObject resultOb = new JSONObject();
+		
+		try {
+			ArrayList<TopicDTO> list = RealtimesService.getSectionTopic4();
+			String stringList = new Gson().toJson(list);
+			resultOb.put("result", 0);
+			resultOb.put("list", stringList);
+		} catch (SQLException e) {
+			resultOb.put("result", 1);
+			resultOb.put("content", "Can`t get News Contents(DB Error)");
+			e.printStackTrace();
+		}
+		writer.print(resultOb);
+	}
+	
+	public void getSectionTopic5(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/xml;charset=UTF-8");
+		PrintWriter writer = response.getWriter();
+		
+		JSONObject resultOb = new JSONObject();
+		
+		try {
+			ArrayList<TopicDTO> list = RealtimesService.getSectionTopic5();
+			String stringList = new Gson().toJson(list);
+			resultOb.put("result", 0);
+			resultOb.put("list", stringList);
+		} catch (SQLException e) {
+			resultOb.put("result", 1);
+			resultOb.put("content", "Can`t get News Contents(DB Error)");
+			e.printStackTrace();
+		}
+		writer.print(resultOb);
+	}
+	
+	public void getSectionTopic6(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/xml;charset=UTF-8");
+		PrintWriter writer = response.getWriter();
+		
+		JSONObject resultOb = new JSONObject();
+		
+		try {
+			ArrayList<TopicDTO> list = RealtimesService.getSectionTopic6();
 			String stringList = new Gson().toJson(list);
 			resultOb.put("result", 0);
 			resultOb.put("list", stringList);

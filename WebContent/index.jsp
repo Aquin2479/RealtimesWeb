@@ -95,14 +95,14 @@
 						</ol>
 						
 						<ul class="index_issue_group list-group">
-						  <li class="list-group-item">Dapibus ac facilisis in  <span class="label label-danger">76</span></li>
-						  <li class="list-group-item">Cras justo odio  <span class="label label-danger">42</span></li>
-						  <li class="list-group-item">Morbi leo risus  <span class="label label-warning">35</span></li>
-						  <li class="list-group-item">Porta ac consectetur ac  <span class="label label-warning">30</span></li>
-						  <li class="list-group-item">Vestibulum at eros  <span class="label label-default">26</span></li>
-						  <li class="list-group-item">Dapibus ac facilisis in  <span class="label label-default">25</span></li>
-						  <li class="list-group-item">Cras justo odio  <span class="label label-primary">21</span></li>
-						  <li class="list-group-item">Morbi leo risus  <span class="label label-primary">11</span></li>
+						  <li class="list-group-item"><span id="issue1_keywords"></span><span id="issue1_articles" class="label label-danger issue_articles_label"></span></li>
+						  <li class="list-group-item"><span id="issue2_keywords"></span><span id="issue2_articles" class="label label-danger issue_articles_label"></span></li>
+						  <li class="list-group-item"><span id="issue3_keywords"></span><span id="issue3_articles" class="label label-warning issue_articles_label"></span></li>
+						  <li class="list-group-item"><span id="issue4_keywords"></span><span id="issue4_articles" class="label label-warning issue_articles_label"></span></li>
+						  <li class="list-group-item"><span id="issue5_keywords"></span><span id="issue5_articles" class="label label-default issue_articles_label"></span></li>
+						  <li class="list-group-item"><span id="issue6_keywords"></span><span id="issue6_articles" class="label label-default issue_articles_label"></span></li>
+						  <li class="list-group-item"><span id="issue7_keywords"></span><span id="issue7_articles" class="label label-primary issue_articles_label"></span></li>
+						  <li class="list-group-item"><span id="issue8_keywords"></span><span id="issue8_articles" class="label label-primary issue_articles_label"></span></li>
 						</ul>
 					</div>
 				</div>
@@ -175,42 +175,55 @@
 						dataType: "json"
 					})
 				});
- 
-				var words = [
-					{text: "Lorem", weight: 13},
-					{text: "Ipsum", weight: 10.5},
-					{text: "Dolor", weight: 9.4},
-					{text: "Sit", weight: 8},
-					{text: "Amet", weight: 6.2},
-					{text: "Consectetur", weight: 5},
-					{text: "Adipiscing", weight: 5},
-					{text: "Lorem", weight: 13},
-					{text: "Ipsum", weight: 10.5},
-					{text: "Dolor", weight: 9.4},
-					{text: "Sit", weight: 8},
-					{text: "Amet", weight: 6.2},
-					{text: "Consectetur", weight: 5},
-					{text: "Adipiscing", weight: 5},
-					{text: "Lorem", weight: 13},
-					{text: "Ipsum", weight: 10.5},
-					{text: "Dolor", weight: 9.4},
-					{text: "Sit", weight: 8},
-					{text: "Amet", weight: 6.2},
-					{text: "Consectetur", weight: 5},
-					{text: "Adipiscing", weight: 5},
-					{text: "Lorem", weight: 13},
-					{text: "Ipsum", weight: 10.5},
-					{text: "Dolor", weight: 9.4},
-					{text: "Sit", weight: 8},
-					{text: "Amet", weight: 6.2},
-					{text: "Consectetur", weight: 5},
-					{text: "Adipiscing", weight: 5},
-				];
 				
-				$('#word_cloud').jQCloud(words, {
-				      width: 500,
-				      height: 400
-				 });
+				$.ajax({
+						url: "topic",
+						data: {
+							command: "get10Topic"
+						},
+						method: "get",
+						dataType: "json",
+						success: function(result) {
+							if (result && result.result == 0) {
+								var json_list = JSON.parse(result.list);
+								var words = [];
+								var weight = 0;
+								
+								for (var i = 0; i < json_list.length; i++) {
+									console.log(json_list[i]);
+									$('#issue'+(i+1)+'_keywords').text(json_list[i].keyword1 + '  ' + json_list[i].keyword2 + '  ' + json_list[i].keyword3 + '  ' + json_list[i].keyword4 + '  ' + + '  ' + json_list[i].keyword5);
+									$('#issue'+(i+1)+'_articles').text(json_list[i].article_count);
+									
+									if (i == 0) {
+										weight = 13;
+									} else if (i == 1) {
+										weight = 10.5;
+									} else if (i == 2) {
+										weight = 9.4;
+									} else if (i == 3 ) {
+										weight = 8;
+									} else if (i == 4 ) {
+										weight = 6.2;
+									} else { 
+										weight = 5;
+									}
+									
+									words.push({'text': json_list[i].keyword1, 'weight': weight});
+									words.push({'text': json_list[i].keyword2, 'weight': weight});
+									words.push({'text': json_list[i].keyword3, 'weight': weight});
+									words.push({'text': json_list[i].keyword4, 'weight': weight});
+									words.push({'text': json_list[i].keyword5, 'weight': weight});
+									
+									$('#word_cloud').jQCloud(words, {
+									      width: 500,
+									      height: 400
+									 });
+								}
+							} else {
+								alert(result.content);
+							}
+						}
+				});
 			});
          </script>
 	</body>

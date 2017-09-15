@@ -426,3 +426,11 @@ a.article, a.article:hover {
 	font-weight: 500;
 	border-right: 1px solid #ddd;
 }
+
+.card-issue-keywords {
+	overflow:hidden;
+}
+
+.issue_articles_label {
+	margin-left: 10px;
+}

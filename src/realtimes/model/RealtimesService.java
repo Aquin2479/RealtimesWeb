@@ -34,7 +34,31 @@ public class RealtimesService {
 		return TopicDAO.getTopicAll();
 	}
 	
-	public static ArrayList<TopicDTO> getSectionTopic() throws SQLException {
-		return TopicDAO.getSectionTopic();
+	public static ArrayList<TopicDTO> getSectionTopic1() throws SQLException {
+		return TopicDAO.getSectionTopic1();
+	}
+	
+	public static ArrayList<TopicDTO> getSectionTopic2() throws SQLException {
+		return TopicDAO.getSectionTopic2();
+	}
+	
+	public static ArrayList<TopicDTO> getSectionTopic3() throws SQLException {
+		return TopicDAO.getSectionTopic3();
+	}
+	
+	public static ArrayList<TopicDTO> getSectionTopic4() throws SQLException {
+		return TopicDAO.getSectionTopic4();
+	}
+	
+	public static ArrayList<TopicDTO> getSectionTopic5() throws SQLException {
+		return TopicDAO.getSectionTopic5();
+	}
+	
+	public static ArrayList<TopicDTO> getSectionTopic6() throws SQLException {
+		return TopicDAO.getSectionTopic6();
+	}
+	
+	public static ArrayList<TopicDTO> get10Topic() throws SQLException {
+		return TopicDAO.get10Topic();
 	}
 }

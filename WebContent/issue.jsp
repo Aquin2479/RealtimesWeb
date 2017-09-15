@@ -103,23 +103,23 @@
 						        <div class ="card-issue-contents">
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">1</div>
-						        			<div class = "col-sm-11" id="card-politics1"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-politics1"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">2</div>
-						        			<div class = "col-sm-11" id="card-politics2"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-politics2"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">3</div>
-						        			<div class = "col-sm-11" id="card-politics3"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-politics3"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">4</div>
-						        			<div class = "col-sm-11" id="card-politics4"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-politics4"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">5</div>
-						        			<div class = "col-sm-11" id="card-politics5"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-politics5"></div>	
 						        		</div>
 						        </div>
 						      </div>
@@ -132,23 +132,23 @@
 						        <div class ="card-issue-contents">
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">1</div>
-						        			<div class = "col-sm-11" id="card-economy1"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-economy1"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">2</div>
-						        			<div class = "col-sm-11" id="card-economy2"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-economy2"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">3</div>
-						        			<div class = "col-sm-11" id="card-economy3"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-economy3"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">4</div>
-						        			<div class = "col-sm-11" id="card-economy4"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-economy4"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">5</div>
-						        			<div class = "col-sm-11" id="card-ecomony5"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-ecomony5"></div>	
 						        		</div>
 						        </div>
 						      </div>
@@ -161,23 +161,23 @@
 						        <div class ="card-issue-contents">
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">1</div>
-						        			<div class = "col-sm-11" id="card-social1"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-social1"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">2</div>
-						        			<div class = "col-sm-11" id="card-social2"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-social2"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">3</div>
-						        			<div class = "col-sm-11" id="card-social3"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-social3"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">4</div>
-						        			<div class = "col-sm-11" id="card-social4"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-social4"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">5</div>
-						        			<div class = "col-sm-11" id="card-social5"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-social5"></div>	
 						        		</div>
 						        </div>
 						      </div>
@@ -190,23 +190,23 @@
 						        <div class ="card-issue-contents">
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">1</div>
-						        			<div class = "col-sm-11" id="card-it1"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-it1"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">2</div>
-						        			<div class = "col-sm-11" id="card-it2"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-it2"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">3</div>
-						        			<div class = "col-sm-11" id="card-it3"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-it3"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">4</div>
-						        			<div class = "col-sm-11" id="card-it4"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-it4"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">5</div>
-						        			<div class = "col-sm-11" id="card-it5"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-it5"></div>	
 						        		</div>
 						        </div>
 						      </div>
@@ -219,23 +219,23 @@
 						        <div class ="card-issue-contents">
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">1</div>
-						        			<div class = "col-sm-11" id="card-ent1"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-entertainments1"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">2</div>
-						        			<div class = "col-sm-11" id="card-ent2"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-entertainments2"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">3</div>
-						        			<div class = "col-sm-11" id="card-ent3"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-entertainments3"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">4</div>
-						        			<div class = "col-sm-11" id="card-ent4"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-entertainments4"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">5</div>
-						        			<div class = "col-sm-11" id="card-ent5"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-entertainments5"></div>	
 						        		</div>
 						        </div>
 						      </div>
@@ -248,23 +248,23 @@
 						        <div class ="card-issue-contents">
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">1</div>
-						        			<div class = "col-sm-11" id="card-sports1"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-sports1"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">2</div>
-						        			<div class = "col-sm-11" id="card-sports2"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-sports2"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">3</div>
-						        			<div class = "col-sm-11" id="card-sports3"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-sports3"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">4</div>
-						        			<div class = "col-sm-11" id="card-sports4"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-sports4"></div>	
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">5</div>
-						        			<div class = "col-sm-11" id="card-sports5"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-sports5"></div>	
 						        		</div>
 						        </div>
 						      </div>
@@ -344,21 +344,118 @@
 				$.ajax({
 						url: "topic",
 						data: {
-							command: "getSectionTopic"
+							command: "getSectionTopic1"
 						},
 						method: "get",
 						dataType: "json",
 						success: function(result) {
 							if (result && result.result == 0) {
 								var json_list = JSON.parse(result.list);
+								$('#start_time').text(json_list[0].analysis_start_time);
+								$('#end_time').text(json_list[0].analysis_end_time);
 								for (var i = 0; i < json_list.length; i++) {
-									console.log(json_list[i]);
+									$('#card-politics'+(i+1)).html(json_list[i].keyword1 +  '</br>' + json_list[i].keyword2 + '</br>' +  json_list[i].keyword3 + '</br>' + json_list[i].keyword4 +  '</br>' + json_list[i].keyword5);
 								}
 							} else {
 								alert(result.content);
 							}
 						}
 				});
+				
+				$.ajax({
+					url: "topic",
+					data: {
+						command: "getSectionTopic2"
+					},
+					method: "get",
+					dataType: "json",
+					success: function(result) {
+						if (result && result.result == 0) {
+							var json_list = JSON.parse(result.list);
+							for (var i = 0; i < json_list.length; i++) {
+								$('#card-economy'+(i+1)).html(json_list[i].keyword1 +  '</br>' + json_list[i].keyword2 + '</br>' +  json_list[i].keyword3 + '</br>' + json_list[i].keyword4 +  '</br>' + json_list[i].keyword5);
+							}
+						} else {
+							alert(result.content);
+						}
+					}
+			});
+			
+				$.ajax({
+					url: "topic",
+					data: {
+						command: "getSectionTopic3"
+					},
+					method: "get",
+					dataType: "json",
+					success: function(result) {
+						if (result && result.result == 0) {
+							var json_list = JSON.parse(result.list);
+							for (var i = 0; i < json_list.length; i++) {
+								$('#card-social'+(i+1)).html(json_list[i].keyword1 +  '</br>' + json_list[i].keyword2 + '</br>' +  json_list[i].keyword3 + '</br>' + json_list[i].keyword4 +  '</br>' + json_list[i].keyword5);
+							}
+						} else {
+							alert(result.content);
+						}
+					}
+			});
+				
+				$.ajax({
+					url: "topic",
+					data: {
+						command: "getSectionTopic4"
+					},
+					method: "get",
+					dataType: "json",
+					success: function(result) {
+						if (result && result.result == 0) {
+							var json_list = JSON.parse(result.list);
+							for (var i = 0; i < json_list.length; i++) {
+								$('#card-it'+(i+1)).html(json_list[i].keyword1 +  '</br>' + json_list[i].keyword2 + '</br>' +  json_list[i].keyword3 + '</br>' + json_list[i].keyword4 +  '</br>' + json_list[i].keyword5);
+							}
+						} else {
+							alert(result.content);
+						}
+					}
+			});
+				
+				$.ajax({
+					url: "topic",
+					data: {
+						command: "getSectionTopic5"
+					},
+					method: "get",
+					dataType: "json",
+					success: function(result) {
+						if (result && result.result == 0) {
+							var json_list = JSON.parse(result.list);
+							for (var i = 0; i < json_list.length; i++) {
+								$('#card-entertainments'+(i+1)).html(json_list[i].keyword1 +  '</br>' + json_list[i].keyword2 + '</br>' +  json_list[i].keyword3 + '</br>' + json_list[i].keyword4 +  '</br>' + json_list[i].keyword5);
+							}
+						} else {
+							alert(result.content);
+						}
+					}
+			});
+				
+				$.ajax({
+					url: "topic",
+					data: {
+						command: "getSectionTopic6"
+					},
+					method: "get",
+					dataType: "json",
+					success: function(result) {
+						if (result && result.result == 0) {
+							var json_list = JSON.parse(result.list);
+							for (var i = 0; i < json_list.length; i++) {
+								$('#card-sports'+(i+1)).html(json_list[i].keyword1 +  '</br>' + json_list[i].keyword2 + '</br>' +  json_list[i].keyword3 + '</br>' + json_list[i].keyword4 +  '</br>' + json_list[i].keyword5);
+							}
+						} else {
+							alert(result.content);
+						}
+					}
+			});
 			});	
          </script>
 	</body>
