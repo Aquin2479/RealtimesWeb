@@ -81,9 +81,15 @@
                         </div>
                     </div>
                 </nav>
-				<div class="index_content row">
-						
-		                <div class="line"></div>
+				<div class="index_content">
+					<ul class="nav nav-tabs" role="tablist" id ="generalTabs">
+						<li role="presentation" class="active"><a href="recommend_content" aria-controls="recommend_content" role="tab" data-toggle="tab">추천</a></li>
+					</ul>
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="recommend_content">
+						</div>
+					</div>
+		         	<div class="line"></div>
             		</div>
         		</div>
         </div>
@@ -105,21 +111,34 @@
 				</div>
 			</div>
 		  </div>
-        <div class="modal fade" id="article-modal" tabindex="-1" role="dialog" aria-labelledby="articleModalLabel" aria-hidden="true">
+         <div class="modal fade" id="article-modal" tabindex="-1" role="dialog" aria-labelledby="articleModalLabel" aria-hidden="true">
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="articleModalLabel">Modal title</h5>
+			        <h5 class="modal-title" id="articleModalLabel">Realtimes</h5>
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">&times;</span>
 			        </button>
 			      </div>
 			      <div class="modal-body">
-			        ...
+			      	<div class = "row" style="margin:0px;">
+			      		<span class="modal_article_badge badge"></span>
+			        		<span class="modal_article_time"></span>
+			      	</div>
+			      	<div class="row" style="margin:0px;">
+			      		<div class="modal_article_title"></div>
+			      	</div>
+			      	<div class="row" style="margin:0px;">
+			      		<div class="col-md-2"></div>
+			      		<div class="col-md-8">
+			      			<img id="modal_article_img" src="img/realtimes.png">
+			      		</div>
+			      		<div class="col-md-2"></div>
+			      	</div>
+			        <div class="modal_article_content"></div>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary">Save changes</button>
+			        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 			      </div>
 			    </div>
 			  </div>
@@ -170,17 +189,17 @@
 						dataType: "json"
 					});
 				});
-				
-				var assign = function(news_code, topic, site, title, writing_time, company, img, content) {
+
+				var assign = function(news_code, topic, section, title, writing_time, company, img, content) {
 					var article_card = 
-					    "<div class ='article-cards' news_code='"+news_code+"' topic='"+topic+"' site='"+site+"' >"+
+					    "<div class ='article-cards' news_code='"+news_code+"' topic='"+topic+"' section='"+section+"' >"+
 						"<div class='row'>"+
 							"<div class='col-sm-3' style='border-right:1px solid #ddd;'>"+
 								"<img class='article-cards-img' src='"+img+"'>"+
 							"</div>"+
 							"<div class='col-sm-9'>"+
 								"<div>"+
-									"<span class='article-cards-site badge'>"+company+"</span>"+
+									"<span class='article-cards-section badge'>"+company+"</span>"+
 									"<span class='article-cards-time'>"+writing_time+"</span>"+
 								"</div>"+
 								"<div class='article-cards-title'>"+
@@ -204,11 +223,10 @@
 						method: "get",
 						dataType: "json",
 						success: function(result) {
-							console.log(result);
-							/* if (result && result.result == 0) {
+							if (result && result.result == 0) {
 								var json_list = JSON.parse(result.list);
 								for (var i = 0; i < json_list.length; i++) {
-									$('#???').append(assign(
+									$('#recommend_content').append(assign(
 											json_list[i].news_code,
 											json_list[i].topic,
 											json_list[i].site,
@@ -220,10 +238,34 @@
 								}
 							} else {
 								alert(result.content);
-							} */
+							}
 						}
 				});
 				
+				var clicked_news = null; // 뉴스 코드
+				
+				$(document).on('click', '.article-cards', function() {
+					clicked_news = $(this).attr('news_code');
+					$('#article-modal').modal('show');
+				});
+				
+				$('#article-modal').on('show.bs.modal', function (e) {
+					var img_src =  $('.article-cards[news_code='+clicked_news+'] .article-cards-img').attr('src');
+					var title =  $('.article-cards[news_code='+clicked_news+'] .article-cards-title').text();
+					var content =  $('.article-cards[news_code='+clicked_news+'] .article-cards-contents').text();
+					var section = $('.article-cards[news_code='+clicked_news+'] .article-cards-section').html();
+					var time =  $('.article-cards[news_code='+clicked_news+'] .article-cards-time').html();
+					
+					$('.modal_article_badge').text(section);
+					$('.modal_article_time').text(time);
+					$('.modal_article_title').text(title);
+					$('.modal_article_content').text(content);
+					$('#modal_article_img').attr('src', img_src);
+				});
+				
+				$('#article-modal').on('hide.bs.modal', function (e) {
+					clicked_news = null;
+				});
 			});	
          </script>
 	</body>

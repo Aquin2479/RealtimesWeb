@@ -121,7 +121,9 @@ public class NewsController extends HttpServlet {
 	        while(it.hasNext()) {
 	            Integer temp = (Integer) it.next();
 	            String topic_name = recentTopic.get(temp).getTopic_name();
-	            list.add(RealtimesService.getRecommendNews(topic_name));
+	            if (RealtimesService.getRecommendNews(topic_name) != null) {
+	            	 	list.add(RealtimesService.getRecommendNews(topic_name));
+	            }
 	        }
 
 			String stringList = new Gson().toJson(list);
