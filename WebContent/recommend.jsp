@@ -82,20 +82,7 @@
                     </div>
                 </nav>
 				<div class="index_content row">
-						<h3 class = "news_button" id="news1">Collapsible Sidebar Using Bootstrap 3</h3>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		
-		                <div class="line"></div>
-		
-		                <h3 class = "news_button" id="news2">Lorem Ipsum Dolor</h3>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		
-		                <div class="line"></div>
-		
-		                <h3 class="news_button" id="news3">Lorem Ipsum Dolor</h3>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		
+						
 		                <div class="line"></div>
             		</div>
         		</div>
@@ -184,40 +171,58 @@
 					});
 				});
 				
-				var clicked_news = null;
-				var viewing_start_time = null;
-				var viewing_end_time = null;
+				var assign = function(news_code, topic, site, title, writing_time, company, img, content) {
+					var article_card = 
+					    "<div class ='article-cards' news_code='"+news_code+"' topic='"+topic+"' site='"+site+"' >"+
+						"<div class='row'>"+
+							"<div class='col-sm-3' style='border-right:1px solid #ddd;'>"+
+								"<img class='article-cards-img' src='"+img+"'>"+
+							"</div>"+
+							"<div class='col-sm-9'>"+
+								"<div>"+
+									"<span class='article-cards-site badge'>"+company+"</span>"+
+									"<span class='article-cards-time'>"+writing_time+"</span>"+
+								"</div>"+
+								"<div class='article-cards-title'>"+
+									title+
+								"</div>"+
+								"<div class='article-cards-contents'>"+
+									content
+								"</div>"+
+							"</div>"+
+						"</div>"+
+					"</div>";
+					
+					return article_card;
+				};
 				
-				// news
-				$('.news_button').on('click', function() {
-					clicked_news = $(this).attr('id');
-					$('#article-modal').modal('show');
-				});
-				// article modal
-				$('#article-modal').on('show.bs.modal', function (e) {
-					viewing_start_time = Date.now();
-					console.log("start viewing: ", clicked_news);
-					// get content of clicked_news and fill modal
-				});
-				$('#article-modal').on('hide.bs.modal', function (e) {
-					viewing_end_time = (Date.now() - viewing_start_time) / 1000;
-					console.log("end viewing: ", clicked_news, viewing_end_time);
-					
-					$.ajax({
-						url: "log",
+				/* $.ajax({
+						url: "news",
 						data: {
-							command: "addLog",
-							news_code: clicked_news,
-							viewing_time: viewing_end_time
+							command: "getRecommendNews"
 						},
-						method: "post",
-						dataType: "json"
-					});
-					
-					clicked_news = null;
-					viewing_start_time = null;
-					viewing_end_time = null;
-				});
+						method: "get",
+						dataType: "json",
+						success: function(result) {
+							if (result && result.result == 0) {
+								var json_list = JSON.parse(result.list);
+								for (var i = 0; i < json_list.length; i++) {
+									$('#???').append(assign(
+											json_list[i].news_code,
+											json_list[i].topic,
+											json_list[i].site,
+											json_list[i].title,
+											json_list[i].writing_time,
+											json_list[i].company,
+											json_list[i].img,
+											json_list[i].content));
+								}
+							} else {
+								alert(result.content);
+							}
+						}
+				}); */
+				
 			});	
          </script>
 	</body>

@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import realtimes.model.dto.MemberDTO;
-import realtimes.model.dto.TestDTO;
 import realtimes.model.util.DBUtil;
 
 public class MemberDAO {
@@ -22,8 +21,8 @@ public class MemberDAO {
 		try {
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement(sql.getString("getMember"));
-			 pstmt.setString(1, username);
-			 pstmt.setString(2, password);
+			pstmt.setString(1, username);
+			pstmt.setString(2, password);
 			rset = pstmt.executeQuery();
 			
 			if (rset.next()) {

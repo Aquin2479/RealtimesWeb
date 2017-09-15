@@ -82,105 +82,196 @@
                     </div>
                 </nav>
 				<div class="index_content row">
+					<div class = "row">
+						<div class="col-sm-1"></div>
+						<div class="col-sm-10">
+							<div class="alert alert-info" role="alert">
+								<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+									<span id="start_time">17.09.15 17:00</span>
+									<span> 부터 </span>
+									<span id="end_time">17.09.15 18:00</span> 
+									<span> 까지 분석된 분야별 이슈입니다.</span> 
+							</div>
+						</div>
+						<div class="col-sm-1"></div>
+					</div>
 					<div class="row">
-						  <div class="col-sm-1"></div>
 						  <div class="col-sm-2">
 						    <div class="card">
 						      <div class="card-block">
-						        <h3 class="card-title">Special title treatment</h3>
-						        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						        <a href="#" class="btn btn-primary">Go somewhere</a>
+						        <h3 class="card-title">정치</h3>
+						        <div class ="card-issue-contents">
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">1</div>
+						        			<div class = "col-sm-11" id="card-politics1"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">2</div>
+						        			<div class = "col-sm-11" id="card-politics2"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">3</div>
+						        			<div class = "col-sm-11" id="card-politics3"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">4</div>
+						        			<div class = "col-sm-11" id="card-politics4"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">5</div>
+						        			<div class = "col-sm-11" id="card-politics5"></div>	
+						        		</div>
+						        </div>
 						      </div>
 						    </div>
 						  </div>
 						  <div class="col-sm-2">
 						    <div class="card">
 						      <div class="card-block">
-						        <h3 class="card-title">Special title treatment</h3>
-						        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						        <a href="#" class="btn btn-primary">Go somewhere</a>
+						        <h3 class="card-title">경제</h3>
+						        <div class ="card-issue-contents">
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">1</div>
+						        			<div class = "col-sm-11" id="card-economy1"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">2</div>
+						        			<div class = "col-sm-11" id="card-economy2"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">3</div>
+						        			<div class = "col-sm-11" id="card-economy3"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">4</div>
+						        			<div class = "col-sm-11" id="card-economy4"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">5</div>
+						        			<div class = "col-sm-11" id="card-ecomony5"></div>	
+						        		</div>
+						        </div>
 						      </div>
 						    </div>
 						  </div>
 						  <div class="col-sm-2">
 						    <div class="card">
 						      <div class="card-block">
-						        <h3 class="card-title">Special title treatment</h3>
-						        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						        <a href="#" class="btn btn-primary">Go somewhere</a>
+						        <h3 class="card-title">사회</h3>
+						        <div class ="card-issue-contents">
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">1</div>
+						        			<div class = "col-sm-11" id="card-social1"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">2</div>
+						        			<div class = "col-sm-11" id="card-social2"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">3</div>
+						        			<div class = "col-sm-11" id="card-social3"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">4</div>
+						        			<div class = "col-sm-11" id="card-social4"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">5</div>
+						        			<div class = "col-sm-11" id="card-social5"></div>	
+						        		</div>
+						        </div>
 						      </div>
 						    </div>
 						  </div>
 						  <div class="col-sm-2">
 						    <div class="card">
 						      <div class="card-block">
-						        <h3 class="card-title">Special title treatment</h3>
-						        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						        <a href="#" class="btn btn-primary">Go somewhere</a>
+						        <h3 class="card-title">IT/과학</h3>
+						        <div class ="card-issue-contents">
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">1</div>
+						        			<div class = "col-sm-11" id="card-it1"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">2</div>
+						        			<div class = "col-sm-11" id="card-it2"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">3</div>
+						        			<div class = "col-sm-11" id="card-it3"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">4</div>
+						        			<div class = "col-sm-11" id="card-it4"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">5</div>
+						        			<div class = "col-sm-11" id="card-it5"></div>	
+						        		</div>
+						        </div>
 						      </div>
 						    </div>
 						  </div>
 						  <div class="col-sm-2">
 						    <div class="card">
 						      <div class="card-block">
-						        <h3 class="card-title">Special title treatment</h3>
-						        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						        <a href="#" class="btn btn-primary">Go somewhere</a>
+						        <h3 class="card-title">연예</h3>
+						        <div class ="card-issue-contents">
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">1</div>
+						        			<div class = "col-sm-11" id="card-ent1"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">2</div>
+						        			<div class = "col-sm-11" id="card-ent2"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">3</div>
+						        			<div class = "col-sm-11" id="card-ent3"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">4</div>
+						        			<div class = "col-sm-11" id="card-ent4"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">5</div>
+						        			<div class = "col-sm-11" id="card-ent5"></div>	
+						        		</div>
+						        </div>
 						      </div>
 						    </div>
 						  </div>
-						  <div class="col-sm-1"></div>
+						  <div class="col-sm-2">
+						    <div class="card">
+						      <div class="card-block">
+						        <h3 class="card-title">스포츠</h3>
+						        <div class ="card-issue-contents">
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">1</div>
+						        			<div class = "col-sm-11" id="card-sports1"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">2</div>
+						        			<div class = "col-sm-11" id="card-sports2"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">3</div>
+						        			<div class = "col-sm-11" id="card-sports3"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">4</div>
+						        			<div class = "col-sm-11" id="card-sports4"></div>	
+						        		</div>
+						        		<div class = "row card-issue-row">
+						        			<div class="col-sm-1 label label-primary card-issue-label">5</div>
+						        			<div class = "col-sm-11" id="card-sports5"></div>	
+						        		</div>
+						        </div>
+						      </div>
+						    </div>
+						  </div>
 						</div>
                 		<div class="line"></div>
-                		<div class="row">
-						  <div class="col-sm-1"></div>
-						  <div class="col-sm-2">
-						    <div class="card">
-						      <div class="card-block">
-						        <h3 class="card-title">Special title treatment</h3>
-						        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						        <a href="#" class="btn btn-primary">Go somewhere</a>
-						      </div>
-						    </div>
-						  </div>
-						  <div class="col-sm-2">
-						    <div class="card">
-						      <div class="card-block">
-						        <h3 class="card-title">Special title treatment</h3>
-						        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						        <a href="#" class="btn btn-primary">Go somewhere</a>
-						      </div>
-						    </div>
-						  </div>
-						  <div class="col-sm-2">
-						    <div class="card">
-						      <div class="card-block">
-						        <h3 class="card-title">Special title treatment</h3>
-						        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						        <a href="#" class="btn btn-primary">Go somewhere</a>
-						      </div>
-						    </div>
-						  </div>
-						  <div class="col-sm-2">
-						    <div class="card">
-						      <div class="card-block">
-						        <h3 class="card-title">Special title treatment</h3>
-						        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						        <a href="#" class="btn btn-primary">Go somewhere</a>
-						      </div>
-						    </div>
-						  </div>
-						  <div class="col-sm-2">
-						    <div class="card">
-						      <div class="card-block">
-						        <h3 class="card-title">Special title treatment</h3>
-						        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						        <a href="#" class="btn btn-primary">Go somewhere</a>
-						      </div>
-						    </div>
-						  </div>
-						  <div class="col-sm-1"></div>
-						</div>
             		</div>
         		</div>
         </div>

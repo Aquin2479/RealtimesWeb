@@ -40,7 +40,8 @@ public class MemberController extends HttpServlet {
 			MemberDTO member = RealtimesService.getMember(username, password);
 			if (member != null) {
 				HttpSession session = request.getSession();
-				session.setAttribute("login", member.getUsername());
+				session.setAttribute("username", member.getUsername());
+				session.setAttribute("member_code", member.getMemberCode());
 				resultOb.put("result", 0);
 			} else {
 				request.setAttribute("errorMsg", "로그인 실패! 다시 시도해주세요(No User)");

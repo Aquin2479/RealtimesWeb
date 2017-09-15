@@ -26,17 +26,23 @@ public class LogController extends HttpServlet {
 	}
 	
 	public void addLog(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		int member_code = -1;
 		String news_code = request.getParameter("news_code").trim();
+		String topic_name = request.getParameter("topic").trim();
 		String viewing_time = request.getParameter("viewing_time").trim();
-		String username = "unknown";
-
-		if (request.getSession().getAttribute("login") != null) {
-			username = (String) request.getSession().getAttribute("login");
+		
+		if (request.getSession().getAttribute("member_code") != null) {
+			member_code = (Integer) request.getSession().getAttribute("member_code");
 		}
 		
 		try {
-			RealtimesService.addLog(username, news_code, viewing_time);
+			if (RealtimesService.addLog(member_code, news_code, topic_name, viewing_time)) {
+				System.out.println("Log Wrtie Success!" + " member:" + member_code + ", news: " + news_code);
+			} else {
+				System.out.println("Log Wrtie Failed!");
+			}
 		} catch (SQLException e) {
+			System.out.println("Log Wrtie Failed!(DB Error)");
 			e.printStackTrace();
 		}	
 	}
