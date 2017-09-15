@@ -390,3 +390,22 @@ a.article, a.article:hover {
 	max-height:150px;
 	overflow: hidden;
 }
+
+.modal_article_title {
+	margin:20px;
+	font-size:24px;
+	text-align:center;
+}
+
+.modal_article_time {
+	margin-left: 5px;
+}
+
+.modal_article_content {
+	line-height: 160%;
+	margin: 20px;
+}
+
+#modal_article_img {
+	width: 100%;
+}

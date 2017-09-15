@@ -132,17 +132,30 @@
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="articleModalLabel">Modal title</h5>
+			        <h5 class="modal-title" id="articleModalLabel">Realtimes</h5>
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">&times;</span>
 			        </button>
 			      </div>
 			      <div class="modal-body">
-			        ...
+			      	<div class = "row" style="margin:0px;">
+			      		<span class="modal_article_badge badge"></span>
+			        		<span class="modal_article_time"></span>
+			      	</div>
+			      	<div class="row" style="margin:0px;">
+			      		<div class="modal_article_title"></div>
+			      	</div>
+			      	<div class="row" style="margin:0px;">
+			      		<div class="col-md-2"></div>
+			      		<div class="col-md-8">
+			      			<img id="modal_article_img" src="img/realtimes.png">
+			      		</div>
+			      		<div class="col-md-2"></div>
+			      	</div>
+			        <div class="modal_article_content"></div>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary">Save changes</button>
+			        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 			      </div>
 			    </div>
 			  </div>
@@ -301,6 +314,18 @@
 				$('#article-modal').on('show.bs.modal', function (e) {
 					viewing_start_time = Date.now();
 					console.log("start viewing: ", clicked_news, clicked_topic, clicked_site);
+					var img_src =  $('.article-cards[news_code='+clicked_news+'] .article-cards-img').attr('src');
+					var title =  $('.article-cards[news_code='+clicked_news+'] .article-cards-title').text();
+					var content =  $('.article-cards[news_code='+clicked_news+'] .article-cards-contents').text();
+					var site = $('.article-cards[news_code='+clicked_news+'] .article-cards-site').html();
+					var time =  $('.article-cards[news_code='+clicked_news+'] .article-cards-time').html();
+					
+					$('.modal_article_badge').text(site);
+					$('.modal_article_time').text(time);
+					$('.modal_article_title').text(title);
+					$('.modal_article_content').text(content);
+					$('#modal_article_img').attr('src', img_src);
+					
 					// get content of clicked_news and fill modal
 				});
 				$('#article-modal').on('hide.bs.modal', function (e) {
