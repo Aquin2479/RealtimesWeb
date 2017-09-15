@@ -207,16 +207,16 @@
 					});
 				});
 				
-				var assign = function(news_code, topic, site, title, writing_time, company, img, content) {
+				var assign = function(news_code, topic, section, title, writing_time, company, img, content) {
 					var article_card = 
-					    "<div class ='article-cards' news_code='"+news_code+"' topic='"+topic+"' site='"+site+"' >"+
+					    "<div class ='article-cards' news_code='"+news_code+"' topic='"+topic+"' section='"+section+"' >"+
 						"<div class='row'>"+
 							"<div class='col-sm-3' style='border-right:1px solid #ddd;'>"+
 								"<img class='article-cards-img' src='"+img+"'>"+
 							"</div>"+
 							"<div class='col-sm-9'>"+
 								"<div>"+
-									"<span class='article-cards-site badge'>"+company+"</span>"+
+									"<span class='article-cards-section badge'>"+company+"</span>"+
 									"<span class='article-cards-time'>"+writing_time+"</span>"+
 								"</div>"+
 								"<div class='article-cards-title'>"+
@@ -236,7 +236,7 @@
 						url: "news",
 						data: {
 							command: "getGeneralNews",
-							site: 'politics'
+							section: 'politics'
 						},
 						method: "get",
 						dataType: "json",
@@ -247,7 +247,7 @@
 									$('#politics').append(assign(
 											json_list[i].news_code,
 											json_list[i].topic,
-											json_list[i].site,
+											json_list[i].section,
 											json_list[i].title,
 											json_list[i].writing_time,
 											json_list[i].company,
@@ -264,15 +264,15 @@
 				$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 				    var target = $(e.target).attr("href");
 				    $(target).html("");
-				    var site = target.substr(1);
+				    var section = target.substr(1);
 
-					if (site !== 'politics') return;
+					if (section !== 'politics') return;
 				    
 					$.ajax({
 							url: "news",
 							data: {
 								command: "getGeneralNews",
-								site: site
+								section: section
 							},
 							method: "get",
 							dataType: "json",
@@ -283,7 +283,7 @@
 										$(target).append(assign(
 												json_list[i].news_code,
 												json_list[i].topic,
-												json_list[i].site,
+												json_list[i].section,
 												json_list[i].title,
 												json_list[i].writing_time,
 												json_list[i].company,
@@ -299,7 +299,7 @@
 				// news modal
 				var clicked_news = null; // 뉴스 코드
 				var clicked_topic = null; // 토픽 번호
-				var clicked_site = null; // 뉴스 종류
+				var clicked_section = null; // 뉴스 종류
 				var viewing_start_time = null;
 				var viewing_end_time = null;
 
@@ -307,20 +307,20 @@
 					console.log('clicked')
 					clicked_news = $(this).attr('news_code');
 					clicked_topic = $(this).attr('topic');
-					clicked_site = $(this).attr('site');
+					clicked_section = $(this).attr('section');
 					$('#article-modal').modal('show');
 				});
 				// article modal
 				$('#article-modal').on('show.bs.modal', function (e) {
 					viewing_start_time = Date.now();
-					console.log("start viewing: ", clicked_news, clicked_topic, clicked_site);
+					console.log("start viewing: ", clicked_news, clicked_topic, clicked_section);
 					var img_src =  $('.article-cards[news_code='+clicked_news+'] .article-cards-img').attr('src');
 					var title =  $('.article-cards[news_code='+clicked_news+'] .article-cards-title').text();
 					var content =  $('.article-cards[news_code='+clicked_news+'] .article-cards-contents').text();
-					var site = $('.article-cards[news_code='+clicked_news+'] .article-cards-site').html();
+					var section = $('.article-cards[news_code='+clicked_news+'] .article-cards-section').html();
 					var time =  $('.article-cards[news_code='+clicked_news+'] .article-cards-time').html();
 					
-					$('.modal_article_badge').text(site);
+					$('.modal_article_badge').text(section);
 					$('.modal_article_time').text(time);
 					$('.modal_article_title').text(title);
 					$('.modal_article_content').text(content);
@@ -346,7 +346,7 @@
 					
 					clicked_news = null;
 					clicked_topic = null;
-					cliecked_site = null;
+					cliecked_section = null;
 					viewing_start_time = null;
 					viewing_end_time = null;
 				});

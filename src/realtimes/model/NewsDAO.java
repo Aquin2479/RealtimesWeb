@@ -14,7 +14,7 @@ import realtimes.model.util.DBUtil;
 public class NewsDAO {
 	static ResourceBundle sql = DBUtil.getResourceBundle();
 	
-	public static ArrayList<NewsDTO> getGeneralNews(String site) throws SQLException {
+	public static ArrayList<NewsDTO> getGeneralNews(String section) throws SQLException {
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			ResultSet rset = null;
@@ -22,12 +22,12 @@ public class NewsDAO {
 			try {
 				con = DBUtil.getConnection();
 				pstmt = con.prepareStatement(sql.getString("getGeneralNews"));
-				pstmt.setString(1, site);
+				pstmt.setString(1, section);
 				rset = pstmt.executeQuery();
 	         
 				list = new ArrayList<NewsDTO>();
 				while (rset.next()) {
-					list.add(new NewsDTO(rset.getString(1), rset.getInt(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8)));
+					list.add(new NewsDTO(rset.getString(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8)));
 				}
 			} finally {
 				DBUtil.close(con, pstmt, rset);

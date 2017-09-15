@@ -409,3 +409,20 @@ a.article, a.article:hover {
 #modal_article_img {
 	width: 100%;
 }
+
+.card-issue-label {
+	margin-top: 15px;
+	color: #35718f;
+	background: #d9edf7;
+}
+
+.card-issue-row {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	padding: 10px;
+}
+
+.card-issue-contents {
+	font-weight: 500;
+	border-right: 1px solid #ddd;
+}

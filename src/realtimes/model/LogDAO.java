@@ -13,7 +13,7 @@ import realtimes.model.util.DBUtil;
 public class LogDAO {
 	static ResourceBundle sql = DBUtil.getResourceBundle();
 	
-	public static boolean addLog(int member_code, String news_code, int topic, String viewing_time) throws SQLException {
+	public static boolean addLog(int member_code, String news_code, String topic_name, String viewing_time) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -23,7 +23,7 @@ public class LogDAO {
 			 pstmt = con.prepareStatement(sql.getString("addLog"));
 			 pstmt.setInt(1, member_code);
 			 pstmt.setString(2, news_code);
-			 pstmt.setInt(3, topic);
+			 pstmt.setString(3, topic_name);
 			 pstmt.setString(4, viewing_time);
 			 rset = pstmt.executeQuery();
 			

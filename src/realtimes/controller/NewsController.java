@@ -38,12 +38,12 @@ public class NewsController extends HttpServlet {
 	public void getGeneralNews(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/xml;charset=UTF-8");
 		PrintWriter writer = response.getWriter();
-		String site = request.getParameter("site").trim();
+		String section = request.getParameter("section").trim();
 		
 		JSONObject resultOb = new JSONObject();
 		
 		try {
-			ArrayList<NewsDTO> list = RealtimesService.getGeneralNews(site);
+			ArrayList<NewsDTO> list = RealtimesService.getGeneralNews(section);
 			String stringList = new Gson().toJson(list);
 			resultOb.put("result", 0);
 			resultOb.put("list", stringList);

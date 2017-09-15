@@ -3,20 +3,20 @@ package realtimes.model.dto;
 public class NewsDTO {
 	
 	private String news_code;
-	private int topic;
-	private String site;
+	private String topic_name;
+	private String section;
 	private String title;
     private String writing_time; 
     private String company;
     private String img;
     private String content;
     
-	public NewsDTO(String news_code, int topic, String site, String title, String writing_time, String company, String img,
-			String content) {
+	public NewsDTO(String news_code, String topic_name, String section, String title, String writing_time, String company,
+			String img, String content) {
 		super();
 		this.news_code = news_code;
-		this.topic = topic;
-		this.site = site;
+		this.topic_name = topic_name;
+		this.section = section;
 		this.title = title;
 		this.writing_time = writing_time;
 		this.company = company;
@@ -32,20 +32,20 @@ public class NewsDTO {
 		this.news_code = news_code;
 	}
 	
-	public int getTopic() {
-		return topic;
+	public String getTopic_name() {
+		return topic_name;
 	}
 	
-	public void setTopic(int topic) {
-		this.topic = topic;
+	public void setTopic_name(String topic_name) {
+		this.topic_name = topic_name;
 	}
 	
-	public String getSite() {
-		return site;
+	public String getsection() {
+		return section;
 	}
 	
-	public void setSite(String site) {
-		this.site = site;
+	public void setsection(String section) {
+		this.section = section;
 	}
 	
 	public String getTitle() {
@@ -79,11 +79,9 @@ public class NewsDTO {
 	public void setImg(String img) {
 		this.img = img;
 	}
-	
 	public String getContent() {
 		return content;
 	}
-	
 	public void setContent(String content) {
 		this.content = content;
 	}
@@ -91,11 +89,11 @@ public class NewsDTO {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("NewsDTO [news_code=").append(news_code).append(", topic=").append(topic).append(", site=")
-				.append(site).append(", title=").append(title).append(", writing_time=").append(writing_time)
-				.append(", company=").append(company).append(", img=").append(img).append(", content=").append(content)
-				.append("]");
+		builder.append("NewsDTO [news_code=").append(news_code).append(", topic_name=").append(topic_name)
+				.append(", section=").append(section).append(", title=").append(title).append(", writing_time=")
+				.append(writing_time).append(", company=").append(company).append(", img=").append(img)
+				.append(", content=").append(content).append("]");
 		return builder.toString();
 	}
-   
+    
 }

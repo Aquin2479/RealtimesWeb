@@ -14,15 +14,15 @@ public class RealtimesService {
 		return MemberDAO.getMember(username, password);
 	}
 	
-	public static boolean addLog(int member_code, String news_code, int topic, String viewing_time) throws SQLException {
-		return LogDAO.addLog(member_code, news_code, topic, viewing_time);
+	public static boolean addLog(int member_code, String news_code, String topic_name, String viewing_time) throws SQLException {
+		return LogDAO.addLog(member_code, news_code, topic_name, viewing_time);
 	}
 	
 	public static ArrayList<LogDTO> getLog(int member_code) throws SQLException {
 		return LogDAO.getlog(member_code);
 	}
-	public static ArrayList<NewsDTO> getGeneralNews(String site) throws SQLException {
-		return NewsDAO.getGeneralNews(site);
+	public static ArrayList<NewsDTO> getGeneralNews(String section) throws SQLException {
+		return NewsDAO.getGeneralNews(section);
 	}
 	
 	public static ArrayList<NewsDTO> getRecommendNews(int topic) throws SQLException {
