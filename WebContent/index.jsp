@@ -190,7 +190,7 @@
 								
 								for (var i = 0; i < json_list.length; i++) {
 									console.log(json_list[i]);
-									$('#issue'+(i+1)+'_keywords').text(json_list[i].keyword1 + '  ' + json_list[i].keyword2 + '  ' + json_list[i].keyword3 + '  ' + json_list[i].keyword4 + '  ' + + '  ' + json_list[i].keyword5);
+									$('#issue'+(i+1)+'_keywords').text(json_list[i].keyword1 + '  ' + json_list[i].keyword2 + '  ' + json_list[i].keyword3 + '  ' + json_list[i].keyword4 + '  ' + json_list[i].keyword5);
 									$('#issue'+(i+1)+'_articles').text(json_list[i].article_count);
 									
 									if (i == 0) {

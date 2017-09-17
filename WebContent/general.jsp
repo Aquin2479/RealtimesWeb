@@ -265,8 +265,9 @@
 				    var target = $(e.target).attr("href");
 				    $(target).html("");
 				    var section = target.substr(1);
+				    console.log(section);
 
-					if (section !== 'politics') return;
+					// if (section !== 'politics') return;
 				    
 					$.ajax({
 							url: "news",
@@ -282,7 +283,7 @@
 									for (var i = 0; i < json_list.length; i++) {
 										$(target).append(assign(
 												json_list[i].news_code,
-												json_list[i].topic,
+												json_list[i].topic_name,
 												json_list[i].section,
 												json_list[i].title,
 												json_list[i].writing_time,

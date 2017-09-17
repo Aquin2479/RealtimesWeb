@@ -78,12 +78,12 @@ public class NewsController extends HttpServlet {
 		}
 		
 		try {
-			ArrayList<TopicDTO> recentTopic = RealtimesService.getTopicAll(); // 최신 토픽 10 x 6
-			ArrayList<LogDTO> log = RealtimesService.getLog(member_code); // 최신 로그 5개
-			ArrayList<String> userKeyword = new ArrayList<String>(); // 사용자 로그에서 취합한 키워를 담을 리스트
+			ArrayList<TopicDTO> recentTopic = RealtimesService.getTopicAll(); // 최신 토픽
+			ArrayList<LogDTO> log = RealtimesService.getLog(member_code); // 사용자 최신 로그
 
-			HashMap<Integer, Integer> topicDistance = new HashMap<Integer, Integer>(); 
-			// 유저와 최신 토픽간 거리를 계산할 맵
+			ArrayList<String> userKeyword = new ArrayList<String>(); // 사용자 로그에서 취합한 키워드를 담을 리스트
+
+			HashMap<Integer, Integer> topicDistance = new HashMap<Integer, Integer>(); // 유저와 최신 토픽간 거리를 계산할 맵
 
 			for (int i = 0; i < log.size(); i++) { // 로그 size : 5
 				if ( i % 2 == 0 ) { // 로그가 두개로 들어가는 문제
@@ -93,24 +93,26 @@ public class NewsController extends HttpServlet {
 					}
 				}
 			}
+			
+			System.out.println(userKeyword);
 	
 			Set userKeywordSet = new HashSet(userKeyword); // 사용자 키워드 리스트의 중복을 제거하기 위해 Set 사용
 
-			for (int i = 0; i < recentTopic.size(); i++) {
+			for (int i = 0; i < recentTopic.size(); i++) { // 분석된 최신 토픽 키워드와 사용자 로그의 토픽 키워드간 거리 계산
 					topicDistance.put(i, 0);
-					if (userKeywordSet.contains(recentTopic.get(i).getKeyword1())) {
+					if (!userKeywordSet.contains(recentTopic.get(i).getKeyword1())) {
 						topicDistance.put(i, topicDistance.get(i) + 1);
 					}
-					if (userKeywordSet.contains(recentTopic.get(i).getKeyword2())) {
+					if (!userKeywordSet.contains(recentTopic.get(i).getKeyword2())) {
 						topicDistance.put(i, topicDistance.get(i) + 1);
 					} 
-					if (userKeywordSet.contains(recentTopic.get(i).getKeyword3())) {
+					if (!userKeywordSet.contains(recentTopic.get(i).getKeyword3())) {
 						topicDistance.put(i, topicDistance.get(i) + 1);
 					}
-					if (userKeywordSet.contains(recentTopic.get(i).getKeyword4())) {
+					if (!userKeywordSet.contains(recentTopic.get(i).getKeyword4())) {
 						topicDistance.put(i, topicDistance.get(i) + 1);
 					}
-					if (userKeywordSet.contains(recentTopic.get(i).getKeyword5())) {
+					if (!userKeywordSet.contains(recentTopic.get(i).getKeyword5())) {
 						topicDistance.put(i, topicDistance.get(i) + 1);
 					}
 			}
@@ -118,14 +120,18 @@ public class NewsController extends HttpServlet {
 			ArrayList<NewsDTO> list = new ArrayList<NewsDTO>();
 			Iterator it = sortByValue2(topicDistance).iterator();
 	        
-	        while(it.hasNext()) {
+	        for(int i = 0; i < 3; i++) {
 	            Integer temp = (Integer) it.next();
 	            String topic_name = recentTopic.get(temp).getTopic_name();
 	            if (RealtimesService.getRecommendNews(topic_name) != null) {
 	            	 	list.add(RealtimesService.getRecommendNews(topic_name));
 	            }
+	            topic_name = recentTopic.get(temp).getTopic_name();
+	            if (RealtimesService.getRecommendNews(topic_name) != null) {
+	            	 	list.add(RealtimesService.getRecommendNews(topic_name));
+	            }
 	        }
-
+	        
 			String stringList = new Gson().toJson(list);
 			resultOb.put("result", 0);
 			resultOb.put("list", stringList);

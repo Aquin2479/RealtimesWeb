@@ -88,9 +88,7 @@
 							<div class="alert alert-info" role="alert">
 								<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
 									<span id="start_time">17.09.15 17:00</span>
-									<span> 부터 </span>
-									<span id="end_time">17.09.15 18:00</span> 
-									<span> 까지 분석된 분야별 이슈입니다.</span> 
+									<span>에 분석된 분야별 이슈입니다.</span> 
 							</div>
 						</div>
 						<div class="col-sm-1"></div>
@@ -148,7 +146,7 @@
 						        		</div>
 						        		<div class = "row card-issue-row">
 						        			<div class="col-sm-1 label label-primary card-issue-label">5</div>
-						        			<div class = "col-sm-11 card-issue-keywords" id="card-ecomony5"></div>	
+						        			<div class = "col-sm-11 card-issue-keywords" id="card-economy5"></div>	
 						        		</div>
 						        </div>
 						      </div>
